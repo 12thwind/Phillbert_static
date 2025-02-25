@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phillbert Solutions | University Career Services Consulting</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+            font-size: 2rem;
+        }
+        
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .service-card {
+            flex: 1 1 300px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            background-color: var(--secondary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-title {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .about {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1 1 500px;
+        }
+        
+        .about-image {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        
+        .why-us-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .point {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .point-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .point-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .author-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-details p {
+            color: #777;
+        }
+        
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            padding-top: 5px;
+        }
+        
+        .contact-details h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-details p, .contact-details a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .contact-details a:hover {
+            color: var(--secondary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Phillbert Solutions</div>
+            <div class="tagline">Transforming University Career Services & Recruitment</div>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <div class="service-content">
+                        <h3 class="service-title">Job Board Management</h3>
+                        <p>We help university career services teams optimize their job boards for maximum effectiveness. Our approach focuses on streamlining posting processes, improving search functionality, and enhancing student engagement to increase utilization rates.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <div class="service-content">
+                        <h3 class="service-title">Corporate Relations</h3>
+                        <p>Develop strategic partnerships with employers and recruiters that benefit your students and institution. We provide frameworks for establishing meaningful connections, maintaining engagement, and creating value-driven relationships that last.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <div class="service-content">
+                        <h3 class="service-title">Program Development</h3>
+                        <p>Design and implement career-focused programs that strengthen connections between students and employers. From mentorship initiatives to industry-specific networking events, we help you create impactful experiences.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <div class="service-content">
+                        <h3 class="service-title">Recruitment Event Platforms</h3>
+                        <p>License and support cutting-edge platforms for career fairs and recruitment events, both virtual and in-person. Our solutions streamline scheduling, enhance engagement, and provide valuable analytics to measure success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">About Phillbert Solutions</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded with a mission to bridge the gap between academic institutions and the professional world, Phillbert Solutions brings specialized expertise to university career services departments looking to enhance their operations and impact.</p>
+                    <br>
+                    <p>We understand the unique challenges that career centers face - limited resources, evolving employer needs, shifting student expectations, and rapidly changing technologies. Our comprehensive approach addresses these challenges by combining industry best practices with innovative solutions tailored to your institution's specific needs.</p>
+                    <br>
+                    <p>With years of experience working with career services teams across the country, we bring valuable insights and practical strategies that deliver measurable results - whether that's increased student engagement, stronger employer partnerships, or more efficient operational processes.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/400/320" alt="placeholder">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Phillbert Solutions?</h2>
+            <div class="why-us-points">
+                <div class="point">
+                    <div class="point-title">
+                        <span class="point-icon">✓</span>
+                        <h3>Specialized Expertise</h3>
+                    </div>
+                    <p>Unlike general higher education consultants, we focus exclusively on career services and recruitment functions, providing deep industry knowledge and specialized solutions.</p>
+                </div>
+                
+                <div class="point">
+                    <div class="point-title">
+                        <span class="point-icon">✓</span>
+                        <h3>Comprehensive Approach</h3>
+                    </div>
+                    <p>We address the entire career services ecosystem, from job board management to employer relationships and technology platforms, creating cohesive solutions.</p>
+                </div>
+                
+                <div class="point">
+                    <div class="point-title">
+                        <span class="point-icon">✓</span>
+                        <h3>Results-Driven Strategy</h3>
+                    </div>
+                    <p>Our recommendations are practical, actionable, and designed to deliver measurable improvements in engagement, satisfaction, and placement rates.</p>
+                </div>
+                
+                <div class="point">
+                    <div class="point-title">
+                        <span class="point-icon">✓</span>
+                        <h3>Customized Solutions</h3>
+                    </div>
+                    <p>We recognize that each institution has unique needs, challenges, and goals. Our solutions are tailored to your specific context, not one-size-fits-all.</p>
+                </div>
+                
+                <div class="point">
+                    <div class="point-title">
+                        <span class="point-icon">✓</span>
+                        <h3>Tech-Forward Approach</h3>
+                    </div>
+                    <p>Stay ahead of the curve with our innovative technological solutions that enhance the efficiency and impact of your career services operations.</p>
+                </div>
+                
+                <div class="point">
+                    <div class="point-title">
+                        <span class="point-icon">✓</span>
+                        <h3>Ongoing Support</h3>
+                    </div>
+                    <p>We don't just provide recommendations and walk away. Our ongoing support ensures successful implementation and sustainable improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Phillbert Solutions transformed our approach to employer relations. Their strategic guidance helped us develop a structured program that has significantly increased recruiter engagement and job opportunities for our students."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-author-image">JD</div>
+                    <div class="author-details">
+                        <h4>Jane Doe</h4>
+                        <p>Director of Career Services, State University</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The recruitment event platform recommended by Phillbert Solutions revolutionized our career fair experience. Registration rates increased by 40%, and both students and employers reported higher satisfaction scores."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-author-image">JS</div>
+                    <div class="author-details">
+                        <h4>John Smith</h4>
+                        <p>Associate Dean, Metropolitan College</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-info">
+                <div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>info@phillbertsolutions.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 9am - 5pm EST</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Serving universities nationwide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>Phillbert Solutions - Empowering University Career Services</p>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Twitter">𝕏</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Phillbert Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

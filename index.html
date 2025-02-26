@@ -61,6 +61,7 @@
             border-radius: 4px;
             font-weight: 600;
             transition: background-color 0.3s;
+            cursor: pointer;
         }
         
         .cta-button:hover {
@@ -99,22 +100,17 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
         
-        .service-icon {
+        .service-header {
             background-color: var(--secondary);
             color: white;
             padding: 20px;
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
         
         .service-content {
             padding: 20px;
-        }
-        
-        .service-title {
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
         }
         
         .about {
@@ -213,41 +209,90 @@
             color: #777;
         }
         
-        .contact {
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            overflow: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-content {
             background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
         }
         
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
         }
         
-        .contact-card {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
+        .close-modal:hover {
+            color: var(--accent);
         }
         
-        .contact-icon {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            margin-right: 15px;
-            padding-top: 5px;
+        .contact-form {
+            margin-top: 20px;
         }
         
-        .contact-details h4 {
-            margin-bottom: 5px;
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
             color: var(--dark);
         }
         
-        .contact-details p, .contact-details a {
-            color: #666;
-            text-decoration: none;
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
         }
         
-        .contact-details a:hover {
-            color: var(--secondary);
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
         }
         
         footer {
@@ -255,22 +300,6 @@
             color: white;
             padding: 30px 0;
             text-align: center;
-        }
-        
-        .footer-content {
-            margin-bottom: 20px;
-        }
-        
-        .social-links {
-            margin-bottom: 20px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            color: white;
-            font-size: 1.5rem;
-            text-decoration: none;
         }
         
         .copyright {
@@ -286,6 +315,12 @@
             .about-image {
                 order: -1;
             }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -294,7 +329,7 @@
         <div class="container">
             <div class="logo">Phillbert Solutions</div>
             <div class="tagline">Transforming University Career Services & Recruitment</div>
-            <a href="#contact" class="cta-button">Get in Touch</a>
+            <button id="contactBtn" class="cta-button">Get in Touch</button>
         </div>
     </header>
 
@@ -303,33 +338,29 @@
             <h2 class="section-title">Our Services</h2>
             <div class="services">
                 <div class="service-card">
-                    <div class="service-icon">📋</div>
+                    <div class="service-header">Job Board Management</div>
                     <div class="service-content">
-                        <h3 class="service-title">Job Board Management</h3>
                         <p>We help university career services teams optimize their job boards for maximum effectiveness. Our approach focuses on streamlining posting processes, improving search functionality, and enhancing student engagement to increase utilization rates.</p>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">🤝</div>
+                    <div class="service-header">Corporate Relations</div>
                     <div class="service-content">
-                        <h3 class="service-title">Corporate Relations</h3>
                         <p>Develop strategic partnerships with employers and recruiters that benefit your students and institution. We provide frameworks for establishing meaningful connections, maintaining engagement, and creating value-driven relationships that last.</p>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">📊</div>
+                    <div class="service-header">Program Development</div>
                     <div class="service-content">
-                        <h3 class="service-title">Program Development</h3>
                         <p>Design and implement career-focused programs that strengthen connections between students and employers. From mentorship initiatives to industry-specific networking events, we help you create impactful experiences.</p>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">💻</div>
+                    <div class="service-header">Recruitment Event Platforms</div>
                     <div class="service-content">
-                        <h3 class="service-title">Recruitment Event Platforms</h3>
                         <p>License and support cutting-edge platforms for career fairs and recruitment events, both virtual and in-person. Our solutions streamline scheduling, enhance engagement, and provide valuable analytics to measure success.</p>
                     </div>
                 </div>
@@ -347,9 +378,6 @@
                     <p>We understand the unique challenges that career centers face - limited resources, evolving employer needs, shifting student expectations, and rapidly changing technologies. Our comprehensive approach addresses these challenges by combining industry best practices with innovative solutions tailored to your institution's specific needs.</p>
                     <br>
                     <p>With years of experience working with career services teams across the country, we bring valuable insights and practical strategies that deliver measurable results - whether that's increased student engagement, stronger employer partnerships, or more efficient operational processes.</p>
-                </div>
-                <div class="about-image">
-<!--                    <img src="/api/placeholder/400/320" alt="placeholder"> -->
                 </div>
             </div>
         </div>
@@ -409,7 +437,7 @@
             </div>
         </div>
     </section>
-<!--
+
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
@@ -437,62 +465,107 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-info">
-                <div>
-                    <div class="contact-card">
-                        <div class="contact-icon">📱</div>
-                        <div class="contact-details">
-                            <h4>Phone</h4>
-                            <p>(906) 442-2321‬</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">✉️</div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>info@phillbert.com</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🕒</div>
-                        <div class="contact-details">
-                            <h4>Business Hours</h4>
-                            <p>Monday - Friday: 9am - 5pm EST</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Serving universities nationwide</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
--->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <p>Phillbert Solutions - Empowering University Career Services</p>
-            </div>
- <!--           <div class="social-links">
-                <a href="#" aria-label="LinkedIn">in</a>
-                <a href="#" aria-label="Twitter">𝕏</a>
-            </div>
--->            <div class="copyright">
+            <div class="copyright">
                 <p>&copy; 2025 Phillbert Solutions. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Contact Phillbert Solutions</h2>
+            <p>Please fill out the form below and we'll get back to you as soon as possible.</p>
+            
+            <form id="contactForm" class="contact-form" action="mailto:info@phillbert.com" method="POST" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="institution">Institution</label>
+                    <input type="text" id="institution" name="institution" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone (Optional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service of Interest</label>
+                    <select id="service" name="service" required>
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="job-board">Job Board Management</option>
+                        <option value="corporate-relations">Corporate Relations</option>
+                        <option value="program-development">Program Development</option>
+                        <option value="event-platforms">Recruitment Event Platforms</option>
+                        <option value="multiple">Multiple Services</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        const modal = document.getElementById("contactModal");
+        
+        // Get the button that opens the modal
+        const btn = document.getElementById("contactBtn");
+        
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close-modal")[0];
+        
+        // Get the form
+        const form = document.getElementById("contactForm");
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Form submission
+        form.addEventListener("submit", function(e) {
+            // We're not preventing default behavior here so the mailto action can work
+            
+            // Display a thank you message
+            alert("Thank you for your message! We'll respond to you at " + document.getElementById("email").value);
+            
+            // Close the modal after a brief delay to allow the mail client to open
+            setTimeout(function() {
+                modal.style.display = "none";
+                form.reset();
+            }, 500);
+        });
+    </script>
 </body>
 </html>

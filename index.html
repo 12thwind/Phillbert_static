@@ -30,14 +30,13 @@
 					</ul>
 				</nav>
 				<footer>
-					<!--<ul class="icons">
+					<ul class="icons">
 						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
 						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
-				-->
 				</footer>
 			</section>
 
@@ -134,23 +133,15 @@
 								<div class="container">
 									<h3>Get in Touch</h3>
 									<p>Ready to transform your career services operations? Contact us today to learn how Phillbert Solutions can help your institution achieve better outcomes for students and stronger partnerships with employers.</p>
-									<form method="post" action="#" id="contact-form">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required /></div>
-											<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required /></div>
-											<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" required /></div>
-											<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6" required></textarea></div>
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" class="primary" value="Send Message" id="submit-btn" /></li>
-													<li><input type="reset" value="Reset Form" /></li>
-												</ul>
-											</div>
-											<div class="col-12">
-												<div id="form-status" style="margin-top: 10px; padding: 10px; border-radius: 4px; display: none;"></div>
-											</div>
-										</div>
-									</form>
+									<div style="text-align: center; margin-top: 2em;">
+										<a href="mailto:info@phillbert.com?subject=Inquiry%20about%20Phillbert%20Solutions&body=Hello%2C%0A%0AI%27m%20interested%20in%20learning%20more%20about%20Phillbert%20Solutions%20and%20how%20you%20can%20help%20our%20career%20services%20department.%0A%0APlease%20contact%20me%20at%20your%20earliest%20convenience.%0A%0AThank%20you%21" 
+										   class="button primary large">
+											<i class="icon solid fa-envelope"></i> Contact Us
+										</a>
+									</div>
+									<div style="text-align: center; margin-top: 1em; color: #666;">
+										<p>Or email us directly at: <strong>info@phillbert.com</strong></p>
+									</div>
 								</div>
 							</section>
 
@@ -175,100 +166,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
-			<!-- Contact Form Handler -->
-			<script type="text/javascript">
-				document.addEventListener('DOMContentLoaded', function() {
-					const form = document.getElementById('contact-form');
-					const submitBtn = document.getElementById('submit-btn');
-					const formStatus = document.getElementById('form-status');
-
-					if (!form) {
-						console.error('Contact form not found');
-						return;
-					}
-
-					form.addEventListener('submit', function(e) {
-						e.preventDefault();
-						
-						// Get form data
-						const formData = new FormData(form);
-						const name = formData.get('name');
-						const email = formData.get('email');
-						const subject = formData.get('subject');
-						const message = formData.get('message');
-
-						// Basic validation
-						if (!name || !email || !subject || !message) {
-							showStatus('Please fill in all fields.', 'error');
-							return;
-						}
-
-						// Disable submit button and show loading state
-						submitBtn.disabled = true;
-						submitBtn.value = 'Processing...';
-						formStatus.style.display = 'none';
-
-						// Create mailto link as fallback
-						const mailtoSubject = encodeURIComponent(`Contact Form: ${subject}`);
-						const mailtoBody = encodeURIComponent(
-							`Name: ${name}\n` +
-							`Email: ${email}\n` +
-							`Subject: ${subject}\n\n` +
-							`Message:\n${message}`
-						);
-						const mailtoLink = `mailto:contact@phillberts.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-
-						// For now, we'll show the user their options
-						showStatus(
-							`Thank you for your message! Since our email service is currently unavailable, you can:<br><br>` +
-							`<strong>Option 1:</strong> <a href="${mailtoLink}" style="color: #007bff; text-decoration: underline;">Click here to open your email client</a> with your message pre-filled.<br><br>` +
-							`<strong>Option 2:</strong> Send an email directly to <strong>contact@phillbertsolutions.com</strong> with your message.<br><br>` +
-							`<strong>Option 3:</strong> Call us at <strong>(555) 123-4567</strong>`,
-							'info'
-						);
-
-						// Reset form after a delay
-						setTimeout(() => {
-							form.reset();
-							submitBtn.disabled = false;
-							submitBtn.value = 'Send Message';
-						}, 2000);
-					});
-
-					function showStatus(message, type) {
-						formStatus.innerHTML = message;
-						formStatus.style.display = 'block';
-						
-						switch(type) {
-							case 'success':
-								formStatus.style.backgroundColor = '#d4edda';
-								formStatus.style.color = '#155724';
-								formStatus.style.border = '1px solid #c3e6cb';
-								break;
-							case 'error':
-								formStatus.style.backgroundColor = '#f8d7da';
-								formStatus.style.color = '#721c24';
-								formStatus.style.border = '1px solid #f5c6cb';
-								break;
-							case 'info':
-								formStatus.style.backgroundColor = '#d1ecf1';
-								formStatus.style.color = '#0c5460';
-								formStatus.style.border = '1px solid #bee5eb';
-								break;
-						}
-					}
-				});
-			</script>
-
-
-			 
-			<script type="text/javascript">
-
-				emailjs.init("eZzD76ZxkUd8D8KhIbFUw");
-				emailjs.send("service_zq412ey", "template_dmucgf9", templateParams)
-			</script>
-			
 
 	</body>
 </html>
